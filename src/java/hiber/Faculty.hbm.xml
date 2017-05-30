@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2016 11:27:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hiber.Faculty" table="faculty" catalog="student" optimistic-lock="version">
+        <id name="idFaculty" type="java.lang.Integer">
+            <column name="idFaculty" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" unique="true" />
+        </property>
+        <set name="specialties" table="specialty" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_faculty" not-null="true" />
+            </key>
+            <one-to-many class="hiber.Specialty" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:growl id="msgs" showDetail="true" />
+        <p:panel header="Basic information" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="fname" value="First name: " />
+                <p:inputText id="fname" value="#{manager.fname}" style="width:150px">
+                </p:inputText>
+
+                <p:outputLabel for="lname" value="Last name: " />
+                <p:inputText id="lname" value="#{manager.lname}" style="width:150px">
+                </p:inputText>
+
+                <p:outputLabel for="birthday" value="Birthday:" />
+                <p:calendar id="birthday" value="#{manager.birthdaydate}" showOn="button" />   
+
+                <p:outputLabel for="gender" value="Gender:" />
+                <p:selectOneMenu id="gender" value="#{manager.gender}" style="width:150px">
+                    <f:selectItem itemLabel="Select Gender" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="Male" itemValue="Male"  />
+                    <f:selectItem itemLabel="Female" itemValue="Female" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="email" value="Email: " />
+                <p:inputText id="email" value="#{manager.email}" style="width:150px">   
+                </p:inputText>
+            </h:panelGrid>
+        </p:panel>
+        <p:panel header="Education Information" style="margin-bottom:10px;">
+
+
+            <h:panelGrid columns="2" cellpadding="5">
+
+
+            <p:outputLabel for="edulevel" value="Education level: " />
+            <p:selectOneMenu id="edulevel" value="#{manager.edulevel}" style="width:250px">
+                <f:selectItem itemLabel="Select Education Level" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="PhD" itemValue="PhD"  />
+                <f:selectItem itemLabel="Ms" itemValue="Ms" />
+                <f:selectItem itemLabel="BS" itemValue="BS" />
+                <f:selectItem itemLabel="Deplom" itemValue="Deplom" />
+
+            </p:selectOneMenu> 
+
+            </h:panelGrid>
+            <p:separator />
+
+        </p:panel> 
+        <p:panel header="Select a Faculty" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="country" value="Faculty: " />
+                <p:selectOneMenu id="country" value="#{manager.faculty}" style="width:150px">
+                    <p:ajax listener="#{manager.onFacultyChange}" update="city" />
+                    <f:selectItem itemLabel="Select Faculty" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{manager.faculties}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="city" value="Specialty: " />
+                <p:selectOneMenu id="city" value="#{manager.specialty}" style="width:150px">
+                    <f:selectItem itemLabel="Select Specialty" itemValue="" noSelectionOption="true" />
+
+                    <f:selectItems value="#{manager.specialties}" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+
+            <p:separator />
+
+            <p:commandButton value="Submit" update="msgs" actionListener="#{manager.displayLocation}" icon="ui-icon-check" />
+        </p:panel>  
+
+    </cc:implementation>
+</html>

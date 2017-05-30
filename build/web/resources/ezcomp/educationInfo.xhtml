@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:panelGrid columns="2" >
+
+            <h3 style="margin-top:0">Education info</h3>
+            <p>Choose your level: 
+                <h:selectOneMenu value="#{studentManage.studentNames}">
+                    <f:selectItems value="#{studentManage.studentNames}"  />
+                </h:selectOneMenu>
+            </p>
+            <p>Choose your faculty: 
+                <h:selectOneMenu value="#{studentFaculty.studentFaculty}">
+                    <f:selectItems value="#{studentFaculty.studentFaculty}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Choose your specialty: 
+                <h:selectOneMenu value="#{studentSpecialty.studentSpecialty}">
+                    <f:selectItems value="#{studentSpecialty.studentSpecialty}" />
+                </h:selectOneMenu>
+            </p>
+            <span>Payment type:</span>
+            <input type="text" id="ptype" minlength="3" />
+
+
+        </h:panelGrid>
+    </cc:implementation>
+</html>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2016 11:27:02 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hiber.Student" table="student" catalog="student" optimistic-lock="version">
+        <id name="idstudent" type="int">
+            <column name="idstudent" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="specialty" class="hiber.Specialty" fetch="select">
+            <column name="id_specialty" not-null="false" unique="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="FirstName" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LastName" length="45" />
+        </property>
+        <property name="entryYear" type="date">
+            <column name="EntryYear" length="0" />
+        </property>
+        <property name="eduLevel" type="string">
+            <column name="Edu_level" length="45">
+                <comment>PhD, Ms,BS , deplom,other</comment>
+            </column>
+        </property>
+        <property name="paymentType" type="string">
+            <column name="`Payment type`" length="45" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="10" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="birthday" length="10" />
+        </property>
+        <property name="telephone1" type="string">
+            <column name="telephone1" length="45" />
+        </property>
+        <property name="telephone2" type="string">
+            <column name="telephone2" length="45" />
+        </property>
+        <property name="email1" type="string">
+            <column name="Email1" length="45" />
+        </property>
+        <property name="email2" type="string">
+            <column name="Email2" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" length="250" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="nationality" length="45" />
+        </property>
+        <property name="docType" type="string">
+            <column name="docType" length="45">
+                <comment>: ID card /Passport</comment>
+            </column>
+        </property>
+        <property name="docNumber" type="string">
+            <column name="docNumber" length="45" />
+        </property>
+        <property name="docExpireTime" type="date">
+            <column name="`docExpire time`" length="10" />
+        </property>
+        <property name="docIssueOrgnazation" type="string">
+            <column name="docIssueOrgnazation" length="45" />
+        </property>
+        <property name="fatherName" type="string">
+            <column name="fatherName" length="45" />
+        </property>
+        <property name="fatherWorkingPlace" type="string">
+            <column name="fatherWorkingPlace" length="250" />
+        </property>
+        <property name="fatherMobilePhone" type="string">
+            <column name="fatherMobilePhone" length="45" />
+        </property>
+        <property name="fatherHomePhone" type="string">
+            <column name="fatherHomePhone" length="45" />
+        </property>
+        <property name="fatherEmail" type="string">
+            <column name="fatherEmail" length="45" />
+        </property>
+        <property name="fatherAdress" type="string">
+            <column name="fatherAdress" length="45" />
+        </property>
+        <property name="matherName" type="string">
+            <column name="matherName" length="45" />
+        </property>
+        <property name="matherWorkingPlace" type="string">
+            <column name="matherWorkingPlace" length="250" />
+        </property>
+        <property name="matherMobilePhone" type="string">
+            <column name="matherMobilePhone" length="45" />
+        </property>
+        <property name="matherHomePhone" type="string">
+            <column name="matherHomePhone" length="45" />
+        </property>
+        <property name="matherEmail" type="string">
+            <column name="matherEmail" length="45" />
+        </property>
+        <property name="matherAddress" type="string">
+            <column name="matherAddress" length="250" />
+        </property>
+        <property name="imagePath" type="string">
+            <column name="Image_path" length="250" />
+        </property>
+        <property name="idEdu" type="java.lang.Integer">
+            <column name="idEdu" />
+        </property>
+        <property name="studentId" type="string">
+            <column name="studentID" length="45" unique="true" />
+        </property>
+        <set name="educationhistories" table="educationhistory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="studentId" not-null="true" />
+            </key>
+            <one-to-many class="hiber.Educationhistory" />
+        </set>
+    </class>
+</hibernate-mapping>
